@@ -27,31 +27,26 @@ export default async function Home() {
   const count = (await getKitUsers()) ?? 0;
   return (
     <main className="min-h-screen">
-      <div className="mx-auto max-w-4xl py-16 ">
-        <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-          <Announcement
-            title="Get Starter Kit for Free"
-            href="https://coding-school-typescript.vercel.app/give-away"
-          />
-        </div>
+      <div className="mx-auto max-w-4xl ">
         <div className="text-center">
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Build it over the weekend and launch on Monday.
+            Manage Projects and Clients Effertlessly
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600 mb-4">
-            This Next Js Boilerplate is a comprehensive and modern starting
-            point, packed with all the features you need to quickly build your
-            SaaS, AI tool, or any web app, helping you make your first earnings
-            online faster.
+            Our comprehesive Projects Management System streamlines your
+            workflow, empowering teams to collaborate effectively and deliver
+            results on time. Start boosting your productivity today.
           </p>
-          <CustomLinkButton title="Go to Dashboard" href="/dashboard" />
+          <CustomLinkButton title="Start a Free Trial" href="/login" />
           <div className="pt-8 pb-4 flex items-center  justify-center gap-8">
             <div className="">
               <AnimatedAvatars />
             </div>
             <div className="">
               <StarRating count={5} />
-              <p className="dark:text-slate-900">{count} developers use it.</p>
+              <p className="dark:text-slate-900">
+                50+ teams delivering projects faster
+              </p>
             </div>
           </div>
         </div>
@@ -75,81 +70,6 @@ export default async function Home() {
         <div className="py-16">
           <CustomerReviews />
           {/* <Testimonials /> */}
-        </div>
-
-        <div className="py-16">
-          <HowItWorks />
-          <div className="pb-8">
-            <Testimonials />
-          </div>
-        </div>
-
-        <div className="py-16 relative">
-          <Iframe
-            url="https://www.youtube.com/embed/Kxea70yK11I?si=ba72X9z64cEgaCp1"
-            width="100%"
-            id=""
-            className="h-[30rem] rounded-sm"
-            display="block"
-            position="relative"
-          />
-          {/* <div className="pb-8">
-            <Testimonials />
-          </div> */}
-        </div>
-      </div>
-      <div className="pb-16">
-        <Showcase />
-      </div>
-      <div className="max-w-6xl mx-auto">
-        <div className="mx-auto max-w-4xl py-16 ">
-          <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <Announcement
-              title="Introducing email templates"
-              href="/email-templates"
-            />
-          </div>
-          <div className="text-center text-balance">
-            <SectionHeading title="Stop wasting hours managing Stripe invoices" />
-            <p className="mt-6 text-lg leading-8 text-gray-600 mb-4">
-              Ditch the Stripe Invoicing fee, reduce customer support, and focus
-              on your startup. 1-minute no-code setup.
-            </p>
-          </div>
-        </div>
-        <div className="py-8">
-          <Pricing />
-          <div className="pb-8">
-            <Testimonials />
-          </div>
-        </div>
-      </div>
-      <div className="max-w-6xl mx-auto">
-        <div className="py-8">
-          <FAQ />
-        </div>
-      </div>
-      <div className="mx-auto max-w-4xl py-16 ">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-            Ditch Stripe Invoicing fee and focus on your startup
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-600 mb-4">
-            Let your customers generate, edit, and download invoices themselves.
-          </p>
-          <CustomLinkButton title="Get Started" href="/courses/next/#pricing" />
-          <div className="pt-8 pb-4 flex items-center  justify-center gap-8">
-            <div className="">
-              <AnimatedAvatars />
-            </div>
-            <div className="">
-              <StarRating count={5} />
-              <p>785 founders sleep better</p>
-            </div>
-          </div>
-          <div className="pb-8">
-            <Testimonials />
-          </div>
         </div>
       </div>
     </main>
