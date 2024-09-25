@@ -9,7 +9,13 @@ export const ourFileRouter = {
   categoryImage: f({ image: { maxFileSize: "1MB" } }).onUploadComplete(
     async ({ metadata, file }) => {
       console.log("file url", file.url);
-      return { uploadedBy: "JB" };
+      return { uploadedBy: "RK" };
+    }
+  ),
+  clientImage: f({ image: { maxFileSize: "1MB" } }).onUploadComplete(
+    async ({ metadata, file }) => {
+      console.log("file url", file.url);
+      return { uploadedBy: "RK" };
     }
   ),
 } satisfies FileRouter;

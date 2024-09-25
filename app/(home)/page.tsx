@@ -19,12 +19,11 @@ import { authOptions } from "@/config/auth";
 import { useSession } from "next-auth/react";
 import { CustomerReviews } from "@/components/frontend/CustomerReviews";
 import Showcase from "@/components/frontend/showcase";
-import { getKitUsers } from "@/actions/users";
 export default async function Home() {
   // const session = await getServerSession(authOptions);
   // const { data: session } = useSession();
   // console.log(session?.user);
-  const count = (await getKitUsers()) ?? 0;
+
   return (
     <main className="min-h-screen">
       <div className="mx-auto max-w-4xl ">

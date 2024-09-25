@@ -1,12 +1,14 @@
 "use server";
 
-import axios from "axios";
 import { db } from "@/prisma/db";
 import { UserProps } from "@/types/types";
 import bcrypt from "bcrypt";
 import { revalidatePath } from "next/cache";
+
+// Create User
 export async function createUser(data: UserProps) {
-  const { email, password, firstName, lastName, name, phone, image } = data;
+  const { email, password, firstName, lastName, name, phone, image, role } =
+    data;
   try {
     // Hash the PAASWORD
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -31,10 +33,12 @@ export async function createUser(data: UserProps) {
         name,
         phone,
         image,
+        role,
       },
     });
-    // revalidatePath("/dashboard/users");
-    // console.log(newUser);
+    revalidatePath("/dashboard/users");
+    revalidatePath("/dashboard/clients");
+    console.log(newUser);
     return {
       error: null,
       status: 200,
@@ -50,18 +54,57 @@ export async function createUser(data: UserProps) {
   }
 }
 
-export async function getKitUsers() {
-  const endpoint = process.env.KIT_API_ENDPOINT as string;
+// Delete User
+export async function deleteUser(id: string) {
   try {
-    // Make the request to the API endpoint
-    const response = await axios.get(endpoint);
+    const deletedUser = await db.user.delete({
+      where: {
+        id,
+      },
+    });
 
-    // Extract the count from the response data
-    const count = response.data.count;
-
-    return count;
+    revalidatePath("/dashboard/clients");
+    return {
+      status: 200,
+      ok: true,
+      data: deletedUser,
+    };
   } catch (error) {
-    console.error("Error fetching the count:", error);
-    return 0;
+    console.log(error);
+    return {
+      error: `Something Went wrong, Please try again`,
+      status: 500,
+      data: null,
+    };
+  }
+}
+
+export async function getUserById(id: string) {
+  try {
+    const user = await db.user.findUnique({
+      where: {
+        id,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}
+
+export async function updateUser(id: string, data: UserProps) {
+  try {
+    const user = await db.user.update({
+      where: {
+        id,
+      },
+      data,
+    });
+    revalidatePath("/dashboard/clients");
+    return user;
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 }
