@@ -51,6 +51,7 @@ model User {
   emailVerified  DateTime?
   image          String?
   role           UserRole        @default(USER)
+  userId         String?         @db.ObjectId
   password       String?
   status         Boolean         @default(true)
   accounts       Account[]

@@ -9,10 +9,8 @@ export function getInitials(name: string | null | undefined): string {
     // Join the initials together
     return initials.join("");
   } else {
-    return "CN";
+    return "RK";
   }
 }
 
-// Example usage
-const initials = getInitials("Muke John");
-console.log(initials); // Outputs: MJ
+
