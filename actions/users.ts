@@ -5,7 +5,6 @@ import { UserProps } from "@/types/types";
 import bcrypt from "bcrypt";
 import { revalidatePath } from "next/cache";
 
-// Create User
 export async function createUser(data: UserProps) {
   const {
     email,
@@ -64,7 +63,6 @@ export async function createUser(data: UserProps) {
   }
 }
 
-// Delete User
 export async function deleteUser(id: string) {
   try {
     const deletedUser = await db.user.delete({

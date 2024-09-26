@@ -17,6 +17,21 @@ export type UserProps = {
   role?: UserRole;
   userId?: string;
 };
+
+export type ProjectProps = {
+  name: string;
+  slug: string;
+  notes: string;
+  description: string;
+  bannerImage: string;
+  thumbnail: string;
+  startDate: string;
+  endDate: string;
+  status: string;
+  clientId: string;
+  userId: string;
+};
+
 export type LoginProps = {
   email: string;
   password: string;
